@@ -103,7 +103,7 @@
     <hr class="sidebar-divider">
     <!-- Nav Item - logout -->
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="#">
             <i class='material-icons'>meeting_room</i>
             <span>ออกจากระบบ</span></a>
     </li>
