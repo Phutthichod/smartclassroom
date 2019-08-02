@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Setting Session Variable -->
+
+
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Kanit&display=swap" rel="stylesheet">
+
+    <title></title>
+
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+
+    <link href="css/customize.css" rel="stylesheet">
+
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+    <!-- Range Slider Css 
+    <link href="lib/ion-rangeslider/css/ion.rangeSlider.css" rel="stylesheet" />
+    <link href="lib/ion-rangeslider/css/ion.rangeSlider.skinFlat.css" rel="stylesheet" />
+
+    <link href='lib/calendar/css/fullcalendar.css' rel='stylesheet' />
+    <link href='lib/calendar/css/fullcalendar.print.css' rel='stylesheet' media='print' />  -->
+    <style>
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        span,
+        p,
+        label,
+        div {
+            font-family: 'Kanit', sans-serif;
+        }
+
+        #accordionSidebar {
+            background-color: #3E49BB;
+        }
+
+        
+
+        
+    </style>
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav  sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <div class="sidebar-brand-icon ">
+                    <i class="fas fa-home"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">Smart<sub>Classroom</sub></div>
+            </a>
+
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-1">
+
+            <li class='nav-item'>
+                <a class='nav-link' href='index.html'>
+                    <i class='material-icons '>person</i>
+                    <span>บัญชีผู้ใช้</span>
+                </a>
+            </li>
+            <li class='nav-item'>
+                <a class='nav-link' href='google_calenda.html'>
+                    <i class='material-icons'>date_range</i>
+                    <span>ปฏิทิน</span>
+                </a>
+            </li>
+            <li class='nav-item'>
+                <a class='nav-link' href='room.html'>
+                    <i class='material-icons'>home</i>
+                    <span>ห้อง</span>
+                </a>
+            </li>
+            </li>
+            <li class='nav-item'>
+                <a class='nav-link collapsed' href='#' data-toggle='collapse' data-target='#link-2' aria-expanded='true'
+                    aria-controls='link-2'>
+                    <i class='material-icons'>list</i>
+                    <span>การจัดการข้อมูล</span>
+                </a>
+                <div id='link-2' class='collapse' aria-labelledby='headingTwo' data-parent='#accordionSidebar'>
+                    <div class=' py-2 collapse-inner rounded'
+                        style='border-left: 2px solid white; border-radius: 0% !important;'>
+                        <div id="accordionSidebar">
+                            <a class='nav-link' href='usertype.html'>ชนิดผู้ใช้</a>
+                            <a class='nav-link' href='roomtype.html'>ชนิดห้อง</a>
+                            <a class='nav-link' href='tools.html'>ชนิดอุปกรณ์</a>
+                            <a class='nav-link' href='couse.html'>หลักสูตร</a>
+                            <a class='nav-link' href='subject.html'>รายวิชา</a>
+                        </div>
+
+                    </div>
+                </div>
+            </li>
+            <li class='nav-item'>
+                <a class='nav-link' href='#'>
+                    <i class='material-icons'>meeting_room</i>
+                    <span>ออกจากระบบ</span>
+                </a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class=" text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content" style="background-color: #dbe0ff6b;">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                    <ul>
+                        <div class="text-left text-primary" style="padding-top:20px;">
+                            <h5>ระบบบริหารจัดการห้องเรียนอัจฉริยะ</h5>
+                        </div>
+                    </ul>
+                    <ul class="navbar-nav ml-auto">
+
+
+                        <div class="topbar-divider d-none d-sm-block"></div>
+
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">น.ส. สวยเด่น เป็นสง่า<br><span
+                                        style="color: tomato">Student</span></span>
+                                <img class="img-profile rounded-circle" src="img/profile.jpg">
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Profile
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+
+                                    Logout
+                                </a>
+                            </div>
+                        </li>
+
+                    </ul>
+
+
+                </nav>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-12 col-12 mb-4">
+                                <div class="card">
+                                    <div class="card-header card-bg text-primary ">
+                                        เพิ่มห้อง
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- DataTales Example -->
+                        <div class="card  mb-4">
+                            <div class="card-body">
+                                <div class="row mb-4">
+                                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 text-right">
+                                        <span>เลขห้อง:</span>
+                                    </div>
+                                    <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12">
+                                        <input type="text" class="form-control" id="username"
+                                            placeholder="กรุณากรอกเลขห้อง">
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="card-header card-header-table py-3" id="addsub">
+                                        <a href="#" class="btn btn-primary btn-icon-split">
+                                            <span class="icon text-white-50">
+                                                <i class="fas fa-flag"></i>
+                                            </span>
+                                            <span class="text">กดเพิ่มชนิดห้อง</span>
+                                        </a>
+
+
+                                    </div>
+
+                                    <div class="table-responsive">
+                                        <div class="row">
+                                        </div>
+                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
+                                            <thead>
+                                                <tr>
+                                                    <th>ชนิดห้อง</th>
+                                                    <th>จำนวนสมาชิก</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>ห้องLab</td>
+                                                    <td>30</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+
+                                <div>
+                                    <div class="card-header card-header-table py-3" id="addsub2">
+                                        <a href="#" class="btn btn-primary btn-icon-split">
+                                            <span class="icon text-white-50">
+                                                <i class="fas fa-flag"></i>
+                                            </span>
+                                            <span class="text">กดเพิ่มอุปกรณ์</span>
+                                        </a>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <div class="row">
+                                        </div>
+                                        <table class="table table-bordered shadow" id="dataTable" width="100%"
+                                            cellspacing="0">
+
+                                            <thead style="background-color: style= #aaf7fa6b">
+                                                <tr>
+                                                    <th>อุปกรณ์</th>
+                                                    <th>จำนวนอุปกรณ์</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>โปรเจคเตอร์</td>
+                                                    <td>1</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <a href='room.html'> <button type="button"
+                                            class="btn btn-success">ยืนยัน</button></a>
+                                    <a href='room.html'><button type="button" class="btn btn-danger"
+                                            onclick="closeForm()">ยกเลิก</button></a>
+                                </div>
+
+
+
+
+
+                            </div>
+
+                        </div>
+                        <div id="modaladdsub" class="modal fade">
+
+                            <form class="modal-dialog modal-lg " action="/action_page.php">
+                                <div class="modal-content">
+                                    <div class="modal-header" style="background-color:#3E49BB">
+                                        <h4 class="modal-title" style="color:white">Add Type Room</h4>
+                                    </div>
+                                    <div class="modal-body" id="addModalBody">
+                                        <div class="container">
+
+                                            <div class="row mb-4">
+                                                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 text-right">
+                                                    <span>ชนิดห้อง:</span>
+                                                </div>
+                                                <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12">
+
+                                                    <select class="form-control" id="sel1">
+                                                        <option>ห้องแลป</option>
+                                                        <option>ห้องเรียนทั่วไป</option>
+                                                        <option>ห้องประชุม</option>
+                                                    </select>
+
+                                                </div>
+                                            </div>
+                                            <div class="row mb-4">
+                                                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 text-right">
+                                                    <span>จำนวนคนที่รองรับ:</span>
+                                                </div>
+                                                <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12">
+                                                    <input type="number" max="350" min="0" class="form-control"
+                                                        id="rank" placeholder="กรุณากรอกจำนวนคนที่รองรับ">
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                            <a href="addroom.html"> <button type="button"
+                                                class="btn btn-success">ยืนยัน</button></a>
+                                        <a href="addroom.html"><button type="button" class="btn btn-danger"
+                                                onclick="closeForm()">ยกเลิก</button></a>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                        <div id="modaladdsub2" class="modal fade">
+
+                            <form class="modal-dialog modal-lg " action="/action_page.php">
+                                <div class="modal-content">
+                                    <div class="modal-header" style="background-color:#3E49BB">
+                                        <h4 class="modal-title" style="color:white">อุปกรณ์</h4>
+                                    </div>
+                                    <div class="modal-body" id="addModalBody">
+                                        <div class="container">
+
+                                            <div class="row mb-4">
+                                                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 text-right">
+                                                    <span>อุปกรณ์:</span>
+                                                </div>
+                                                <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12">
+
+                                                    <select class="form-control" id="sel1">
+                                                        <option>ไมค์</option>
+                                                        <option>คอมพิวเตอร์</option>
+                                                        <option>โปรเจคเตอร์</option>
+                                                    </select>
+
+                                                </div>
+                                            </div>
+                                            <div class="row mb-4">
+                                                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 text-right">
+                                                    <span>จำนวนอุปกรณ์:</span>
+                                                </div>
+                                                <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12">
+                                                    <input type="number" max="350" min="0" class="form-control"
+                                                        id="rank" placeholder="กรุณากรอกจำนวนอุปกรณ์">
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                            <a href="addroom.html"> <button type="button"
+                                                class="btn btn-success">ยืนยัน</button></a>
+                                        <a href="addroom.html"><button type="button" class="btn btn-danger"
+                                                onclick="closeForm()">ยกเลิก</button></a>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+
+
+
+                    </div>
+                    <!-- SSS -->
+                </div>
+            </div>
+            <!-- start Model -->
+
+            <!-- End Model -->
+            <!-- <div class="card-body">
+                                        
+                        <div class="accordion basic-accordion" id="accordion" role="tablist">
+                            <div class="card">
+                                <div class="card-header" role="tab" id="headingOne">
+                                    <h6 class="mb-0">
+                                    <a data-toggle="collapse" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne" class="collapsed">
+                                        <i class="card-icon mdi mdi-checkbox-marked-circle-outline"></i>
+                                        <i class="material-icons">perm_contact_calendar</i>
+                                        How can I pay for an order I placed?
+                                    </a>
+                                    </h6>
+                                </div>
+                            <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" style="">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <img class="img-fluid rounded" src="https://placehold.it/200x150" alt="image"> </div>
+                                            <div class="col-md-9">
+                                            <p>You can pay for the product you bit cards, or via online banking. </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            
+                            
+                    </div> -->
+
+        </div>
+        <!-- /.container-fluid -->
+
+    </div>
+    <!-- End of Main Content -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+
+    <!--<script>
+        function openForm() {
+            document.getElementById("modal-wrapper").style.display = "block";
+        }
+
+        function closeForm() {
+            document.getElementById("modal-wrapper").style.display = "none";
+        }
+    </script>-->
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
+    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <!-- RangeSlider Plugin Js -->
+    <script src="lib/ion-rangeslider/js/ion.rangeSlider.js"></script>
+
+    <script src="lib/markmap/markerclusterer.js"></script>
+
+    <script src='lib/calendar/js/fullcalendar.js' type="text/javascript"></script>
+
+    <script src='js/customize.js' type="text/javascript"></script>
+    <script src="lib/chart.js/Chart.min.js"></script>
+</body>
+
+</html>
+
+
+
+<script src="OtherUsersList.js"></script>
+<script src="OtherUsersListModal.js"></script>
+
+<script>
+    $(".table").DataTable();
+    // $( document ).ready(function() {
+
+    //     $('#addUser').click(function(){
+    //         console.log('fffff')
+    //     });
+    // });
+    $(document).ready(function () {
+        console.log("ready!");
+        $("#btn_delete").click(function () {
+            swal({
+                title: "ยืนยันการลบ 02204223 Electronics Fundamentals",
+                icon: "warning",
+                buttons: ["ยกเลิก", "ยืนยัน"],
+            });
+        });
+        $("#addsub").click(function () {
+            $("#modaladdsub").modal();
+        });
+
+        $("#addsub2").click(function () {
+            $("#modaladdsub2").modal();
+        });
+
+    });
+
+
+
+
+</script>
+
+
+
+</body>
+
+</html>
