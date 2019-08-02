@@ -1,7 +1,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
 <!-- Sidebar - Brand -->
-<a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
+<a class="sidebar-brand d-flex align-items-center justify-content-center" href="../index.php">
     <div class="sidebar-brand-icon">
         <i class="fas fa-home"></i>
     </div><br><br>
@@ -13,7 +13,7 @@
 
 <!-- Nav Item - Dashboard -->
  <li class="nav-item">
-    <a class="nav-link" href="index.php">
+    <a class="nav-link" href="../index.php">
         <i class="fas fa-home"></i>
         <span>หน้าแรก</span></a>
 </li> 

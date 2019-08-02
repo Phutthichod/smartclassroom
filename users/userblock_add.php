@@ -10,7 +10,7 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
       <!--start Sidebar -->
-      <?php include("../main/sidebar.php"); ?>
+      <?php include("sidebarprofile.php"); ?>
       <!--end Sidebar -->
       <!-- Content Wrapper -->
       <div id="content-wrapper" class="d-flex flex-column">
