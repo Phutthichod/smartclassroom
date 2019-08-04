@@ -1,12 +1,37 @@
-<?php
-include('../header.php');
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <?php
+    include('../main/header.php');
+    ?>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css2.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.5.2/css/fileinput.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <?php
+	$servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "workme";
+    
+    try {
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $stmt = $conn->prepare("SELECT * FROM files"); 
+        $stmt->execute();
+    
+    }
+    catch(PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
+    $conn = null;
 ?>
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<link rel="stylesheet" href="style.css">
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.5.2/css/fileinput.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-
 </head>
 
 <body id="page-top">
@@ -14,166 +39,246 @@ include('../header.php');
     <!-- Page Wrapper -->
     <div id="wrapper">
 
+        <!-- Sidebar -->
+        <?php
+                include('sidebartool.php');
+                ?>
+        <!-- End of Sidebar -->
 
-        <!-- Begin Page Content -->
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
 
-        <div class="container-fluid" id="app">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-12 col-12 mb-4">
-                        <div class="card">
-                            <div class="card-header card-bg text-primary">
-                                อุปกรณ์
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xl-3 col-12 mb-4">
-                        <div class="card border-left-primary card-color-three shadow h-100 py-2">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="font-weight-bold  text-uppercase mb-1">อุปกรณ์</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">25 ชิ้น</div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="material-icons icon-big">library_books</i>
+            <!-- Main Content -->
+            <div id="content" style="background-color: #dbe0ff6b;">
+
+                <!-- Topbar -->
+                <?php
+                include('../main/topbar.php');
+                ?>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+
+                <div class="container-fluid" id="app">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-12 col-12 mb-4">
+                                <div class="card">
+                                    <div class="card-header card-bg text-primary">
+                                        อุปกรณ์
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-
-                    <div class="col-xl-3 col-12 mb-4">
-                        <div class="card border-left-primary card-color-four shadow h-100 py-2" id="addtool" style="cursor:pointer;">
-
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="font-weight-bold  text-uppercase mb-1">เพิ่มอุปกรณ์ใหม่
+                        <div class="row">
+                            <div class="col-xl-3 col-12 mb-4">
+                                <div class="card border-left-primary card-color-three shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="font-weight-bold  text-uppercase mb-1">อุปกรณ์</div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800">25 ชิ้น</div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <i class="material-icons icon-big">library_books</i>
+                                            </div>
                                         </div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">+1 ชิ้น</div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="material-icons icon-big">add_circle</i>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
 
 
-
-                </div>
-
-                <!-- DataTales Example -->
-                <div class="card shadow mb-4">
-                    <div class="card-header card-header-table py-3 text-primary">
-                        <h6 class="m-0 font-weight-bold">รายชื่อห้องในระบบ</h6>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <div class="row">
-                            </div>
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-
-                                <thead>
-                                    <tr>
-                                        <th>ชื่อ</th>
-                                        <th>ชื่อย่อ</th>
-                                        <th>หมายเลข</th>
-                                        <th>ชนิด</th>
-                                        <th>ที่อยู่</th>
-                                        <th>จัดการ</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php $a = array("Volvo", "BMW", "Toyota , Volvo", "BMW", "Toyota");
-                                    for ($i = 25; $i >= 0; $i--) {
-                                        ?>
-                                        <tr>
-                                            <td><?php echo $a[0]; ?></td>
-                                            <td>Pongwisanu Hootip</td>
-                                            <td>6120502734</td>
-                                            <td>Pongwisanu Hootip</td>
-                                            <td>Pongwisanu Hootip</td>
-                                            <td style="text-align:center;">
-                                                <button type="button" id="btn_info" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></button>
-
-                                                <button type="button" id="btn_delete" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></button>
-                                                <button type="button" id="btn_log" class="btn btn btn-info btn-sm"><i class="fas fa-file-alt"></i></button>
-
-                                                </a>
-
-                                            </td>
-
-                                        </tr>
-                                    <?php } ?>
-                                </tbody>
-
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <!-- start Model -->
-                <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-scrollable" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalScrollableTitle">เพิ่มอุปกรณ์</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="container">
-
-                                    <form action="/action_page.php">
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-sm-4"><label class="mr-sm-2">ชื่อย่ออุปกรณ์:</label></div>
-                                                <div class="col-sm-8"> <input class="form-control mb-2 mr-sm-2" placeholder=""></div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-4"><label class="mr-sm-2">หมายเลขอุปกรณ์:</label></div>
-                                                <div class="col-sm-8"><input class="form-control mb-2 mr-sm-2" placeholder=""></div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-4"> <label class="mr-sm-2">ชื่ออุปกรณ์:</label></div>
-                                                <div class="col-sm-8"><input class="form-control mb-2 mr-sm-2" placeholder=""></div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-4"><label class="mr-sm-2">ชนิด : </label>
+                           
+                                <a href="tool-add.php"  class="col-xl-3 col-12 mb-4 " style="text-decoration:none; ">
+                                <div class="card border-left-primary card-color-four shadow h-100 py-2" id="addtool" >
+                                  
+                                   
+                                        <div class="card-body addtool">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div class="font-weight-bold  text-uppercase mb-1">เพิ่มอุปกรณ์ใหม่
+                                                    </div>
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">+1 ชิ้น</div>
                                                 </div>
-                                                <div class="col-sm-8"><button type="button" class="btn btn-primary form-control mb-2 mr-sm-2" data-toggle="modal" data-target="#ex">
-                                                        เลือกชนิดอุปกรณ์
-                                                    </button></div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-4"><label class="mr-sm-2">อัพโหลดภาพ :
-                                                    </label></div>
-                                                <div class="col-sm-8"> <button type="button" class="btn btn-primary form-control mb-2 mr-sm-2" data-toggle="modal" data-target="#uploadmodal">
-                                                        เลือกภาพที่จะอัพโหลด
-                                                    </button></div>
-                                                <div class="form-group"></div>
+                                                <div class="col-auto">
+                                                    <i class="material-icons icon-big">add_circle</i>
+                                                </div>
                                             </div>
                                         </div>
-                                    </form>
+                                    
+
+                                </div>
+                           
+                            </a>
+
+
+                        </div>
+
+                        <!-- DataTales Example -->
+                        <div class="card shadow mb-4">
+                            <div class="card-header card-header-table py-3 text-primary">
+                                <h6 class="m-0 font-weight-bold">รายชื่ออุปกรณ์ในระบบ</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <div class="row">
+                                    </div>
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
+                                        <thead>
+                                            <tr>
+                                                <th>ชื่อ</th>
+                                                <th>ชื่อย่อ</th>
+                                                <th>หมายเลข</th>
+                                                <th>ชนิด</th>
+                                                <th>ที่อยู่</th>
+                                                <th>จัดการ</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php $a = array("Volvo", "BMW", "Toyota , Volvo", "BMW", "Toyota");
+                                            for($i = 25; $i >= 0 ; $i--){
+                                            ?>
+                                            <tr>
+                                                <td><?php echo $a[0];?></td>
+                                                <td>Pongwisanu Hootip</td>
+                                                <td>6120502734</td>
+                                                <td>Pongwisanu Hootip</td>
+                                                <td>Pongwisanu Hootip</td>
+                                                <td style="text-align:center;">
+                                                <a href="tool-edit-page1.php">  <button type="button" id="btnInfo" data-toggle="tooltip" data-placement="top" title="แก้ไข"
+                                                        class="btn btn-warning btn-sm btnInfo"><i
+                                                            class="fas fa-edit"></i></button></a>
+
+                                                 <button type="button" id="btn_delete"
+                                                        class="btn btn-danger btn-sm del" data-toggle="tooltip" data-placement="top" title="ลบ"><i
+                                                            class="far fa-trash-alt"></i></button>
+
+                                                             <button type="button" id="btn_log"
+                                                        class="btn btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="log">
+                                                        
+                                                       <i class="fas fa-file-alt"></i></button> 
+                                                        
+
+                                                    
+
+                                                </td>
+
+                                            </tr>
+                                            <?php } ?>
+                                        </tbody>
+
+                                    </table>
                                 </div>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary">Save changes</button>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                        <!-- start Model -->
+                        <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
 
+                            <div class="modal-dialog modal-dialog-scrollable" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalScrollableTitle">เพิ่มอุปกรณ์</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="container">
+
+                                            <form action="/action_page.php">
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-sm-4"><label
+                                                                class="mr-sm-2">ชื่อย่ออุปกรณ์:</label></div>
+                                                        <div class="col-sm-8"> <input class="form-control mb-2 mr-sm-2"
+                                                                placeholder=""></div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-4"><label
+                                                                class="mr-sm-2">หมายเลขอุปกรณ์:</label></div>
+                                                        <div class="col-sm-8"><input class="form-control mb-2 mr-sm-2"
+                                                                placeholder=""></div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-4"> <label
+                                                                class="mr-sm-2">ชื่ออุปกรณ์:</label></div>
+                                                        <div class="col-sm-8"><input class="form-control mb-2 mr-sm-2"
+                                                                placeholder=""></div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-4"><label class="mr-sm-2">ชนิดอุปกรณ์ :
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-sm-8 text-center"><label id="nameType"
+                                                                class="mr-sm-2 ">123456789
+                                                            </label></div>
+                                                        <div class="col-sm-4"></div>
+                                                        <div class="d-flex justify-content-sm-end col-sm-8 "
+                                                            style="flex-direction: column;"><button id="btnType"
+                                                                type="button"
+                                                                class="btn btn-primary form-control mb-2    "
+                                                                data-toggle="modal" data-target="#ex">
+                                                                เลือกชนิดอุปกรณ์
+                                                            </button></div>
+                                                    </div>
+                                                    <div class="row">
+
+                                                        <div class="col-sm-4"><label class="mr-sm-2 ">ภาพอุปกรณ์ :
+                                                            </label></div>
+                                                        <div class="card col-sm-8 " id="testPic">
+                                                            <div class="col-sm-12" id="conPic">
+                                                                <div id="v-for-object">
+                                                                    <h1>{{jsonpic}}</h1>
+                                                                    <div class="row " v-for="(value, index) in jsonpic">
+
+                                                                        <div class="card  col-sm-4 m-sm-2 " style=";">
+                                                                            <img src={{value.FilesName}}
+                                                                                style="width: 100%;height: 100%; padding:5px">
+                                                                        </div>
+
+
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+
+                                                            <div class="col-sm-12 mt-sm-2"> <button id="btnPic"
+                                                                    type="button"
+                                                                    class="btn btn-primary form-control mb-2 "
+                                                                    data-toggle="modal" data-target="#uploadmodal">
+                                                                    เลือกภาพที่จะอัพโหลด
+                                                                </button>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-8 mt-sm-2 "> <button id="btnup2"
+                                                                type="button" class="btn btn-primary form-control mb-2 "
+                                                                data-toggle="modal" data-target="#uploadmodal">
+                                                                เลือกภาพที่จะอัพโหลด
+                                                            </button>
+
+                                                        </div>
+
+                                                        <div class="form-group"></div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Close</button>
+
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <!-- End Model -->
+                        <!-- End Model -->
 
-                <!-- <div class="card-body">
+                        <!-- <div class="card-body">
                                         
                         <div class="accordion basic-accordion" id="accordion" role="tablist">
                             <div class="card">
@@ -202,42 +307,42 @@ include('../header.php');
                             
                     </div> -->
 
+                    </div>
+                    <!-- /.container-fluid -->
+
+                </div>
+                <!-- End of Main Content -->
+                <!-- /.container-fluid -->
+
             </div>
-            <!-- /.container-fluid -->
+            <!-- End of Main Content -->
 
         </div>
-        <!-- End of Main Content -->
-        <!-- /.container-fluid -->
-
-    </div>
-    <!-- End of Main Content -->
-
-    </div>
-    <!-- End of Content Wrapper -->
+        <!-- End of Content Wrapper -->
 
     </div>
     <div class="modal" id="ex">
         <div class="modal-dialog modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalScrollableTitle">ชนิดอุปกรณ์</h5>
+                    <h5 class="modal-title" id="litsToolTitle">ชนิดอุปกรณ์</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <ol class="list-group">
-                        <?php
-                        for ($i = 20; $i > 0; $i--) {
-                            ?>
-                            <li class="list-group-item list-group-item-action" value="First">First item</li>
-                            <li class="list-group-item list-group-item-action" value="First">Second item</li>
-                            <li class="list-group-item list-group-item-action" value="First">Third item</li>
-                        <?php } ?>
+                        <?php 
+                                for($i = 20 ; $i >0 ;$i--)
+                                {
+                                ?>
+                        <li class="list-group-item list-group-item-action" value="First">First item</li>
+                        <li class="list-group-item list-group-item-action" value="First">Second item</li>
+                        <li class="list-group-item list-group-item-action" value="First">Third item</li>
+                        <?php }?>
                     </ol>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Save changes</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 
                 </div>
@@ -245,14 +350,14 @@ include('../header.php');
         </div>
     </div>
 
-    <div class="modal fade" id="uploadmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="uploadmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-xl" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button id="bn" type="button" class="btn btn-secondary" Close</button> <h5 class="modal-title">อัพโหลดภาพอุปกรณ์</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
@@ -264,7 +369,8 @@ include('../header.php');
 
                                 <div class="file-loading">
 
-                                    <input id="file-1" type="file" name="file" onchange="handleFiles(this.files)" multiple class="file" data-overwrite-initial="false" data-min-file-count="1">
+                                    <input id="file-1" type="file" name="file" multiple class="file"
+                                        data-overwrite-initial="false" data-min-file-count="1">
 
                                 </div>
 
@@ -284,78 +390,53 @@ include('../header.php');
 
 
     <!-- End of Page Wrapper -->
-    <?php include("../footer.php"); ?>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <?php include('../main/footer.php') ?>
+  
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.5.2/js/fileinput.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.7/themes/fa/theme.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-
     <script type="text/javascript">
-        $('#file-1').fileinput({
-            theme: 'fa',
-            uploadUrl: "upload.php",
-            uploadExtraData: function() {
-                return {
-                    _token: $("input[name='_token']").val()
-                };
-            },
-            allowedFileExtensions: ['jpg', 'png', 'gif'],
-            overwriteInitial: false,
-            maxFileSize: 2000,
-            maxFileNum: 8,
-            slugCallback: function(filename) {
-                return filename.replace('(', '_').replace(']', '_');
-            }
-        });
+    $('#file-1').fileinput({
+        theme: 'fa',
+        uploadUrl: "upload.php",
+        uploadExtraData: function() {
+            return {
+                _token: $("input[name='file']").val()
+            };
+        },
+        allowedFileExtensions: ['jpg', 'png', 'gif'],
+        overwriteInitial: false,
+        maxFileSize: 2000,
+        maxFileNum: 8,
+        slugCallback: function(filename) {
+            return filename.replace('(', '_').replace(']', '_');
+        }
+    });
     </script>
     <script>
-        $('#dataTable').dataTable({
-            "oLanguage": {
-                sLengthMenu: "แสดง _MENU_ แถว",
-                sSearch: "<span>ค้นหา </span> _INPUT_",
-                sInfo: "กำลังแสดง _START_ ถึง _END_ จาก _TOTAL_ แถว", //search
-                oPaginate: {
-                    sFirst: "First",
-                    sLast: "Last",
-                    sNext: "ต่อไป",
-                    sPrevious: "ก่อนหน้า"
-                },
-            }
-        });
-    </script>
-    <?php $a = '1'; //ตัวแปร php
-    ?>
+// $( document ).ready(function() {
 
-    <script type="text/javascript">
-        x = <?php json_encode($a); ?>;
-        x = x * 20;
-        $.post('tools.php', {
-            data: x
-        });
-    </script>
-    <script>
+//     $('#addUser').click(function(){
+//         console.log('fffff')
+//     });
+// });
 
-    </script>
-    <script>
-        // $( document ).ready(function() {
+// let pic = ["Saab", "Volvo", "BMW"];
+// let type = "ยังไม่ได้เลือกชนิด";
+$(document).ready(function() {
 
-        //     $('#addUser').click(function(){
-        //         console.log('fffff')
-        //     });
-        // });
-        $(document).ready(function() {
-            $(".table").DataTable();
+  $('[data-toggle="tooltip"]').tooltip();   
+
+
             $("#file-1").change(function() {
-                console.log("ssss" + $(this).val())
+                console.log($("input[name='file']").val())
                 //alert( "Handler for .change() called." );
             });
-            let type = "";
             $("#bn").click(function() {
                 console.log($("#file-1").val());
 
@@ -367,25 +448,18 @@ include('../header.php');
             $('#file-1').fileinput(function() {
                 console.log("saadas");
             });
-            $("#btn_delete").click(function() {
+            $(".del").click(function() {
                 swal({
                     title: "ยืนยันการลบ 02204223 Electronics Fundamentals",
                     icon: "warning",
                     buttons: ["ยืนยัน", "ยกเลิก"],
                 });
-            });
-            $("#addtool").click(function() {
-                $("#exampleModalScrollableTitle").text("เพิ่มอุปกรณ์");
-                $("#exampleModalScrollable").modal();
-            });
-            $("#btn_info").click(function() {
-                $("#exampleModalScrollableTitle").text("แก้ไขอุปกรณ์");
 
-                $("#exampleModalScrollable").modal();
             });
-            $("li").click(function() {
-                type = "ssss" + $(this).attr("value");
-                console.log(type);
-            });
-        });
-    </script>
+         });
+         </script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</body>
+
+
+</html>

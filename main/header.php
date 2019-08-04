@@ -33,4 +33,68 @@
 <!-- เสริม -->
 <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+    body {
+        margin: 0 auto;
+        padding: 0;
+        font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+        font-size: 14px;
+    }
+
+    #calendar {
+        max-width: 800px;
+        margin: 0 auto;
+        color: #000;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    span,
+    p,
+    label,
+    div {
+        font-family: 'Kanit', sans-serif;
+
+    }
+
+    .fc-content {
+        color: white;
+    }
+
+    .fc-day-number {
+        color: #000000
+    }
+
+    #accordionSidebar {
+        background-color: #3E49BB;
+    }
+
+    #calendar {
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    #home {
+
+        background-color: white;
+        max-width: 700px;
+    }
+
+    #menu1 {
+        background-color: white;
+        max-width: auto;
+    }
+
+    .dot {
+        height: 25px;
+        width: 25px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+    }
+</style>
 <!--############################### end header ############################### -->

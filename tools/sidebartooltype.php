@@ -1,7 +1,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
 <!-- Sidebar - Brand -->
-<a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+<a class="sidebar-brand d-flex align-items-center justify-content-center" href="../index.php">
     <div class="sidebar-brand-icon">
         <i class="fas fa-home"></i>
     </div><br><br>
@@ -12,8 +12,8 @@
 <hr class="sidebar-divider my-0">
 
 <!-- Nav Item - Dashboard -->
- <li class="nav-item active">
-    <a class="nav-link" href="index.html">
+ <li class="nav-item">
+    <a class="nav-link" href="../index.php">
         <i class="fas fa-home"></i>
         <span>หน้าแรก</span></a>
 </li> 
@@ -36,8 +36,8 @@
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">การจัดการผู้ใช้งาน:</h6>
-            <a class="collapse-item" href="buttons.html">รายชื่อผู้ใช้</a>
-            <a class="collapse-item" href="cards.html">ตำแหน่ง</a>
+            <a class="collapse-item" href="../users/userlist.php">รายชื่อผู้ใช้</a>
+            <a class="collapse-item" href="../users/userposition.php">ตำแหน่ง</a>
         </div>
     </div>
 </li>
@@ -53,38 +53,38 @@
         data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">การจัดการปฏิทิน:</h6>
-            <a class="collapse-item " href="utilities-color.html">ปฏิทินวันหยุด</a>
-            <a class="collapse-item" href="utilities-border.html">ปฏิทินปีการศึกษา</a>
+            <a class="collapse-item " href="">ปฏิทินวันหยุด</a>
+            <a class="collapse-item" href="../calendar/edu_calendar.php">ปฏิทินปีการศึกษา</a>
         </div>
     </div>
 </li>
-<li class="nav-item">
+<li class="nav-item ">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#room"
         aria-expanded="true" aria-controls="collapseUtilities">
         <i class='material-icons'>home</i>
         <span>ห้อง</span>
     </a>
-    <div id="room" class="collapse" aria-labelledby="headingUtilities"
+    <div id="room" class="collapse " aria-labelledby="headingUtilities"
         data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">การจัดการห้อง:</h6>
-            <a class="collapse-item " href="utilities-color.html">ห้อง</a>
-            <a class="collapse-item" href="utilities-border.html">ชนิดห้อง</a>
+            <a class="collapse-item " href="../room/room.php">ห้อง</a>
+            <a class="collapse-item" href='../room/roomtype.php'>ชนิดห้อง</a>
         </div>
     </div>
 </li>
-<li class="nav-item">
+<li class="nav-item active">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#acess"
         aria-expanded="true" aria-controls="collapseUtilities">
         <i class='material-icons'>create</i>
         <span>อุปกรณ์</span>
     </a>
-    <div id="acess" class="collapse" aria-labelledby="headingUtilities"
+    <div id="acess" class="collapse show" aria-labelledby="headingUtilities"
         data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">การจัดการอุปกรณ์:</h6>
-            <a class="collapse-item " href="utilities-color.html">อุปกรณ์</a>
-            <a class="collapse-item" href="utilities-border.html">ชนิดอุปกรณ์</a>
+            <a class="collapse-item " href='tools/tool.php'>อุปกรณ์</a>
+            <a class="collapse-item active"  href='tools/tooltype.php'>ชนิดอุปกรณ์</a>
         </div>
     </div>
 </li>
@@ -98,8 +98,8 @@
         data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">การจัดการวิชา:</h6>
-            <a class="collapse-item " href="utilities-color.html">หลักสูตร</a>
-            <a class="collapse-item" href="utilities-border.html">รายวิชา</a>
+            <a class="collapse-item "  href='../subject/course.php'>หลักสูตร</a>
+            <a class="collapse-item" href='../subject/subject.php'>รายวิชา</a>
         </div>
     </div>
 </li>
@@ -107,7 +107,7 @@
 <hr class="sidebar-divider">
 <!-- Nav Item - logout -->
 <li class="nav-item">
-    <a class="nav-link" href="charts.html">
+    <a class="nav-link" href="#">
     <i class='material-icons'>meeting_room</i>
         <span>ออกจากระบบ</span></a>
 </li>
